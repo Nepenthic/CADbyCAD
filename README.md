@@ -7,8 +7,9 @@ modern CAD packages while also supporting automated toolpath creation.
 ## Current prototype
 
 The repository contains a small Python module that can load a 2D profile
-from a CSV file and either generate g-code or extrude the profile into a
-simple 3D model.
+from a CSV file and either generate g-code or create basic 3D models. The
+current tooling is intentionally tiny but aims to gradually grow into a
+more capable CAD/CAM environment.
 
 ### Usage
 
@@ -31,6 +32,19 @@ simple 3D model.
 
    ```bash
    python -m cadcam stl path/to/profile.csv -H 5 -o part.stl
+   ```
+
+4. Revolve the profile around the Y axis:
+
+   ```bash
+   python -m cadcam revolve path/to/profile.csv -s 36 -o part.stl
+   ```
+
+5. Apply simple transformations (translate, scale or rotate) and output a new
+   profile:
+
+   ```bash
+   python -m cadcam transform path/to/profile.csv -T 5 2 -S 2 -R 45 -o new.csv
    ```
 
 The g-code file will contain contouring moves with optional multiple depth
