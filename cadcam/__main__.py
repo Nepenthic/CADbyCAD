@@ -1,6 +1,7 @@
 import argparse
 from .model import Profile, Extrusion, Revolution
 from .cam import generate_gcode
+from . import gui
 
 
 def main() -> None:
@@ -31,7 +32,13 @@ def main() -> None:
     t.add_argument("-R", "--rotate", type=float, help="Rotation angle in degrees")
     t.add_argument("-o", "--output", help="Output CSV file (default: stdout)")
 
+    sub.add_parser("gui", help="Launch graphical interface")
+
     args = parser.parse_args()
+
+    if args.command == "gui":
+        gui.run()
+        return
 
     profile = Profile.from_csv(args.profile)
 

@@ -47,6 +47,13 @@ more capable CAD/CAM environment.
    python -m cadcam transform path/to/profile.csv -T 5 2 -S 2 -R 45 -o new.csv
    ```
 
+6. Launch the graphical interface:
+
+   ```bash
+   python -m cadcam gui
+   ```
+   (Requires Tkinter and a desktop environment.)
+
 The g-code file will contain contouring moves with optional multiple depth
 passes. The STL file represents a simple extrusion of the 2D profile.
 
